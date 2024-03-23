@@ -29,7 +29,7 @@ fn encrypt_large_file(
         if read_count == BUFFER_LEN {
             let ciphertext = stream_encryptor
                 .encrypt_next(buffer.as_slice())
-                .map_err(|_| anyhow!("maybe key was incorrect"))?;
+                .map_err(|_| anyhow!("maybe the key was incorrect"))?;
             dist_file.write(&ciphertext)?;
         } else {
             let ciphertext = stream_encryptor
@@ -83,8 +83,6 @@ fn decrypt_large_file(
 fn main() -> Result<(), anyhow::Error> {
     let  large_file_key = b"mykeyjustlongenoughtobe32chars!?";
     let  large_file_nonce = b"mynoncejustnineteen";
-    // OsRng.fill_bytes(&mut large_file_key);
-    // OsRng.fill_bytes(&mut large_file_nonce);
 
     println!("Encrypting fume");
     encrypt_large_file(

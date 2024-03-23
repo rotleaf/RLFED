@@ -8,4 +8,3 @@ edition = "2021"
 [dependencies]
 anyhow = "1.0.81"
 chacha20poly1305 = { version = "0.9.0", features = ["stream"] }
-rand = "0.8.5"
